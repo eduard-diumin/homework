@@ -55,17 +55,16 @@ const users = [
   },
 ];
 
-let newArray = []
-let usersBalance = 0;
+let usersBalance = users.filter(user => {
+    let balance = parseFloat(user.balance.replace(/[$,]/g, ''));
+    return balance > 2000
+})
 
-for (let i = 0; i < users.length; i++) {
-    const {index, balance, phone} = users[i];
-    let userBalance = parseFloat(balance.replace(/[$,]/g, ''));
-    usersBalance += userBalance;
-    if (userBalance > 2000) {
-        newArray.push(`Номер користувача ${index}: ${phone}`);
-    }
-}
+let usersTotalBalance = users.reduce((acc, user) => {
+    let balance = parseFloat(user.balance.replace(/[$,]/g, ''));
+    return acc + balance
+}, 0)
 
-console.log(newArray);
-console.log('Cума балансів користувачів:', usersBalance.toFixed(2));
+let usersPhones = usersBalance.map(users => `Користувач ${users.index} - ${users.phone}`);
+console.log(usersPhones);
+console.log(`Загальний баланс користувачів: $${usersTotalBalance.toFixed(2)}`);
