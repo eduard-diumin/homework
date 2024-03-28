@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+         body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+        #slider {
+            position: relative;
+            width: 100%;
+            min-height: 100dvh;
+        }
+
+        .slide {
+            display: none;
+            height: 100vh;
+        }
+
+        .slide.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            display: block;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        #prev-btn {
+            left: 0;
+        }
+
+        #next-btn {
+            right: 0;
+        }
+
+    .disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    </style>
+    <div id="slider">
+        <div class="slide active">Слайд 1</div>
+        <div class="slide">Слайд 2</div>
+        <div class="slide">Слайд 3</div>
+        <button id="prev-btn" class="slider-btn">Prev</button>
+        <button id="next-btn" class="slider-btn">Next</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
