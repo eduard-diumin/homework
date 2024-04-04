@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <div class="card__title">
+                <h3>New products</h3>
+            </div>
+            <div class="card__body">
+                <div class="half">
+                    <div class="featured_text">
+                        <h1>Nurton</h1>
+                        <p class="sub">Office Chair</p>
+                        <p class="price">$210.00</p>
+                    </div>
+                    <div class="image">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/613A7vcgJ4L._SL1500_.jpg" alt="">
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem nam pariatur
+                            voluptate perferendis, asperiores aspernatur! Porro similique consequatur, nobis soluta
+                            minima, quasi laboriosam hic cupiditate perferendis esse numquam magni.</p>
+                    </div>
+                    <span class="stock"><i class="fa fa-pen"></i> In stock</span>
+                </div>
+            </div>
+            <div class="card__footer">
+                <div class="recommend">
+                    <p>Recommended by</p>
+                    <h3>Andrew Palmer</h3>
+                </div>
+                <div class="action">
+                    <button type="button" id="addToCartBtn">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" id="order-details">
+            <h2>Інформація про замовлення</h2>
+            <div id="product-details"></div>
+        </div>
+
+        <!-- form -->
+        <div class="checkout">
+            <button class="close-checkout">x</button>
+            <div class="error"></div>
+            <form id="order-form">
+                <label for="fullname">ПІБ покупця:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Іванов Іван Іванович" required>
+
+                <label for="city">Місто:</label>
+                <select id="city" name="city" required>
+                    <option value="" hidden>Оберіть місто</option>
+                    <option value="Харків">Хірків</option>
+                    <option value="Львів">Львів</option>
+                </select>
+
+                <label for="post-office">Склад Нової пошти:</label>
+                <input type="number" id="post-office" name="post_office" placeholder="20" min="1" step="1" required>
+
+                <label for="payment-method">Спосіб оплати:</label>
+                <select id="payment-method" name="payment_method" required>
+                    <option value="Післяплата">Післяплата</option>
+                    <option value="Банківська картка">Оплата банківською карткою</option>
+                </select>
+
+                <label for="quantity">Кількість товару:</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" step="1" required>
+
+                <label for="comment">Коментар до замовлення:</label>
+                <textarea id="comment"></textarea>
+
+                <button type="submit">Підтвердити замовлення</button>
+            </form>
+        </div>
+
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
