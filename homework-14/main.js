@@ -27,8 +27,30 @@ function clickOutsideHandler(e) {
 }
 
 const orderForm = document.querySelector("#order-form");
+const orederInput = orderForm.querySelectorAll('input');
 const submitBtn = document.querySelector('form button[type="submit"]');
 const orderDetails = document.querySelector("#order-details");
+
+const patterns = {
+  fullname: /^[А-ЯҐЄІЇ][а-яґєії']+\s[А-ЯҐЄІЇ][а-яґєії']+\s[А-ЯҐЄІЇ][а-яґєії']+$/,
+  phone: /^[\d()+\-]{10,13}$/,
+  email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+};
+
+function validateInputs() {
+  let isValid = true;
+
+  orederInput.forEach(item => {
+    const key = item.getAttribute('name');
+    const pattern = patterns[key];
+    if (!pattern) return; 
+    if (!pattern.test(item.value)) {
+      isValid = false;
+    }
+  });
+
+  return isValid;
+}
 
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -36,44 +58,52 @@ submitBtn.addEventListener("click", function (e) {
   const formData = new FormData(orderForm);
   const orderData = {};
 
-  for (const [key, value] of formData.entries()) {
+  formData.forEach((value, key) => {
     orderData[key] = value;
-  }
+  });
 
   const { fullname, city, post_office, payment_method, quantity, comment } =
     orderData;
 
   if (!fullname || !city || !post_office || !payment_method || !quantity) {
-    e.preventDefault(); 
+    e.preventDefault();
     showError("Будь ласка, заповніть всі обов'язкові поля!");
     return;
   }
 
-  const fullnamePattern = /^[А-ЯЁа-яёІіЇїҐґA-Za-z]+\s[А-ЯЁа-яёІіЇїҐґA-Za-z]+\s[А-ЯЁа-яёІіЇїҐґA-Za-z]+$/;
-  if (!fullnamePattern.test(fullname)) {
-    e.preventDefault();
-    showError("Будь ласка, введіть ПІБ у форматі 'Прізвище Ім'я По батькові' (наприклад, 'Іванов Іван Іванович').");
+  if (!validateInputs()) {
+    showError("Будь ласка, заповніть всі обов'язкові поля коректно!");
     return;
   }
 
-  if (!/^\d+$/.test(quantity)) {
-    e.preventDefault();
-    showError("Кількість товару повинна бути цілим числом!");
-    return;
-  }
   console.log(orderData);
-  const productInfo = `Товар: ${productName}, Кількість: ${quantity}, Сума до сплати: $ ${productPrice.replace("$", "") * quantity
+  const productInfo = `Товар: ${productName}, Кількість: ${quantity}, Сума до сплати: $ ${
+    productPrice.replace("$", "") * quantity
   }`;
   const deliveryInfo = `Покупець: ${fullname},Місто: ${city}, Склад Нової пошти: ${post_office}, Спосіб оплати: ${payment_method}`;
 
-  productDetails.innerHTML = `<img src="${productImage.src}" width="75" alt="Product Image"><p>${productInfo}</p><p>${deliveryInfo}</p>`;
+  const productImg = document.createElement("img");
+  const infoText = document.createElement("p");
+  const deliveryText = document.createElement("p");
+  productImg.classList.add('product__img-details');
+  productImg.src = productImage.src;
+  deliveryText.textContent = deliveryInfo;
+  infoText.textContent = productInfo;
+
+  productDetails.innerHTML = "";
+  productDetails.append(productImg);
+  productDetails.append(infoText);
+  productDetails.append(deliveryText);
+
   checkout.classList.remove("active");
   orderDetails.classList.add("active");
 });
 
 function showError(text) {
   error.textContent = `${text}`;
-  setTimeout(() => {
-    error.textContent = "";
-  }, 4000);
+  orederInput.forEach(item => {
+    item.addEventListener('input', () => {
+      error.textContent = "";
+    }) 
+  })
 }

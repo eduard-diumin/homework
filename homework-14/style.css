@@ -217,6 +217,10 @@ main {
     padding: 40px;
 }
 
+.product__img-details {
+  width: 75px;
+}
+
 .error {
  color: red;
  border: 1px solid red;

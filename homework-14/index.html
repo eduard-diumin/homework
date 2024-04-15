@@ -57,23 +57,23 @@
             <form id="order-form">
                 <label for="fullname">ПІБ покупця:</label>
                 <input type="text" id="fullname" name="fullname" placeholder="Іванов Іван Іванович" required>
-
+                <label for="phone">Телефон</label>
+                <input type="tel" name="phone" placeholder="+380000000000" required>
+                <label for="email">Email</label>
+                <input type="email" name="email" required>
                 <label for="city">Місто:</label>
                 <select id="city" name="city" required>
                     <option value="" hidden>Оберіть місто</option>
                     <option value="Харків">Хірків</option>
                     <option value="Львів">Львів</option>
                 </select>
-
                 <label for="post-office">Склад Нової пошти:</label>
                 <input type="number" id="post-office" name="post_office" placeholder="20" min="1" step="1" required>
-
                 <label for="payment-method">Спосіб оплати:</label>
                 <select id="payment-method" name="payment_method" required>
                     <option value="Післяплата">Післяплата</option>
                     <option value="Банківська картка">Оплата банківською карткою</option>
                 </select>
-
                 <label for="quantity">Кількість товару:</label>
                 <input type="number" id="quantity" name="quantity" value="1" min="1" step="1" required>
 
