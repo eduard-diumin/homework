@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <div class="block">
+            <h1>Chose your city</h1>
+            <select name="city" id="city" value="">
+                <option value="" hidden>Chose your city ...</option>
+                <option value="Kyiv">Kyiv</option>
+                <option value="Kharkiv">Kharkiv</option>
+                <option value="Lviv">Lviv</option>
+            </select>
+            <div class="box">
+                <img src="./" alt="icon">
+                <h2>City</h2>
+                <ul class="weather__list"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
