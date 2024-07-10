@@ -1,0 +1,11 @@
+.list-reset {
+    list-style: none;
+}
+
+.aside-nav {
+    min-width: 240px;
+    border: 1px solid blue;
+    align-self: stretch;
+    display: grid;
+    place-items: center;
+}

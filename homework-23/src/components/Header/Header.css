@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border: 1px solid red;
+}
+
+header .aside-nav {
+    border: none;
+}
+
+.logo {
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+header ul {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+header ul a {
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+}
